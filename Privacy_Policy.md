@@ -53,3 +53,7 @@ We may update this Privacy Policy periodically to reflect changes in the bot’s
 **9. Contact Us**
 
 If you have any questions about this Privacy Policy or wish to exercise your data protection rights, please contact us via Discord or Patreon.
+
+---
+
+By using DisSafe Shield, you acknowledge that you have read and understood this Privacy Policy, and you consent to the collection and use of your data as described herein.
