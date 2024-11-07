@@ -163,3 +163,5 @@ cython_debug/
 *.txt
 *.drawio
 *.tldr
+*.png
+test_app.py
