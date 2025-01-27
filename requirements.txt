@@ -1,0 +1,6 @@
+nextcord
+python-dotenv
+requests
+mysql-connector-python
+gunicorn
+pytest
