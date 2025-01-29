@@ -175,3 +175,4 @@ cython_debug/
 *.txt
 !requirements.txt
 .vscode/
+config/servers/
