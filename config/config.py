@@ -3,8 +3,9 @@ import os
 
 
 def load_config():
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     try:
-        with open('config/config.json', 'r', encoding='utf-8') as f:
+        with open(f'{path}/config/config.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
         print('File not found')
@@ -17,8 +18,9 @@ def load_config():
         return None
 
 def save_config(config):
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     try:
-        with open('config/config.json', 'w', encoding='utf-8') as f:
+        with open(f'{path}/config/config.json', 'w', encoding='utf-8') as f:
             json.dump(config, f, indent=4, ensure_ascii=False)
     except FileNotFoundError:
         print('File not found')
@@ -30,10 +32,10 @@ def save_config(config):
         print(f'Error saving config: {error}')
         raise
 
-
 def load_server_config(server_id):
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     try:
-        with open(f'config/servers/{server_id}.json', 'r', encoding='utf-8') as f:
+        with open(f'{path}/config/servers/{server_id}.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
         print('File not found')
@@ -46,8 +48,9 @@ def load_server_config(server_id):
         return None
 
 def save_server_config(config, server_id):
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     try:
-        with open(f'config/servers/{server_id}.json', 'w', encoding='utf-8') as f:
+        with open(f'{path}/config/servers/{server_id}.json', 'w', encoding='utf-8') as f:
             json.dump(config, f, indent=4, ensure_ascii=False)
     except FileNotFoundError:
         print('File not found')
@@ -58,7 +61,6 @@ def save_server_config(config, server_id):
     except Exception as error:
         print(f'Error saving server config: {error}')
         raise
-
 
 def create_config_file(server_id):
     folder_path = os.path.dirname(os.path.abspath(__file__))
