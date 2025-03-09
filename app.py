@@ -30,7 +30,7 @@ async def on_guild_join(guild):
 
 @bot.slash_command(description='See bot latency')
 async def ping(interaction: Interaction):
-    await interaction.response.send_message(f'Ping: {round(bot.latency * 1000)}ms', ephemeral=True)
+    await interaction.followup.send(f'Ping: {round(bot.latency * 1000)}ms', ephemeral=True)
 
 
 @bot.slash_command(description='Make a user report')
@@ -41,12 +41,13 @@ async def make_report(
     proof: str,
     accuser: nextcord.User = None
 ):
+    await interaction.response.defer(ephemeral=True)
     if user == interaction.user:
-        await interaction.response.send_message('You cannot report yourself.', ephemeral=True)
+        await interaction.followup.send('You cannot report yourself.', ephemeral=True)
         return
     
     if user == bot.user:
-        await interaction.response.send_message('You cannot report the bot.', ephemeral=True)
+        await interaction.followup.send('You cannot report the bot.', ephemeral=True)
         return
 
     accuser = accuser or interaction.user
