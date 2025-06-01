@@ -1,0 +1,13 @@
+service:
+  bot:
+    prefix: "!"
+    depend_on:
+      - db
+      - api
+    activity: "Moderation Bot made by Debug Cove"
+    status: "online"
+  api:
+    host: "0.0.0.0"
+    port: 3000
+  logging:
+    enable: true
