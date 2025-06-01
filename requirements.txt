@@ -1,0 +1,8 @@
+nextcord
+python-dotenv
+requests
+mysql-connector-python
+aiomysql
+gunicorn
+pytest
+pyyaml
