@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 clear
 echo
 echo
@@ -15,31 +17,32 @@ echo "                                                                          
 echo
 echo "Starting ...."
 
+project_path="${PWD}"
 environment_create=false
+env_path="${project_path}/.env"
+environment_path="${project_path}/.venv"
+requirements_path="${project_path}/requirements.txt"
 
-if [ ! -f .env ]; then
-  echo
-  echo "ERROR - .env file not found!"
-  exit 1
-fi
-
-if [ ! -d ".venv" ]; then
+if [ ! -d "${environment_path}" ]; then
   environment_create=true
   echo "INFO - Virtual environment not found! Creating"
-  python3 -m venv .venv
+  python3 -m venv "${environment_path}" || { echo "ERROR - Failed to create virtual environment"; exit 1; }
 fi
 
 echo "INFO - Activating virtual environment"
-source .venv/bin/activate
+source "${environment_path}/bin/activate"
 
-if [ "$environment_create" = true ]; then
+if [ "$environment_create" = "true" ]; then
+  if [ ! -f "$requirements_path" ]; then
+    echo "ERROR - requirements.txt not found!"
+    exit 1
+  fi
   echo "INFO - Installing dependencies"
-  pip install -r requirements.txt
+  pip install -r "$requirements_path"
 fi
 
 echo "INFO - Starting the application"
 echo
 python3 app.py
-
 echo
 echo
