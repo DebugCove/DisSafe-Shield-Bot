@@ -6,3 +6,6 @@ aiomysql
 gunicorn
 pytest
 pyyaml
+validators
+bandit
+pylint
