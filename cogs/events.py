@@ -7,12 +7,12 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'Bot ligado  como {self.bot.user}')
+        print(f'Bot connected as {self.bot.user}')
         try:
             synced = await self.bot.tree.sync()
-            print(f'{len(synced)} comandos carregados com sucesso')
+            print(f'{len(synced)} commands loaded successfully')
         except Exception as error:
-            print(f'Erro ao tentar sicronizar os comandos: {error}')
+            print(f'Error when trying to synchronise commands: {error}')
 
 
 async def setup(bot):
